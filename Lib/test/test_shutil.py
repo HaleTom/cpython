@@ -2582,6 +2582,18 @@ class Symlink(unittest.TestCase):
             pass
 
     #
+    # Argument checking
+    #
+    def test_bool_argument_type_checking(self):
+        bool_args = ['overwrite', 'follow_symlinks', 'target_is_dir']
+
+        # Set each bool arg to be non-bool ('X'), one after another
+        for arg in bool_args:
+            kwargs = {k: 'X' if k == arg else True for k in bool_args}
+            with self.assertRaises(TypeError):
+                shutil.symlink(self.src_file1, self.dst_file1, **kwargs)
+
+    #
     # Single source, NO overwrite
     #
     def test_1src_dst_not_exist(self):
@@ -2706,14 +2718,6 @@ class Symlink(unittest.TestCase):
     def test_(self):
         pass
 
-    def test_bool_argument_type_checking(self):
-        bool_args = ['overwrite', 'follow_symlinks', 'target_is_dir']
-
-        # Set each bool arg to be non-bool ('X'), one after another
-        for arg in bool_args:
-            kwargs = {k: 'X' if k == arg else True for k in bool_args}
-            with self.assertRaises(TypeError):
-                shutil.symlink(self.src_file1, self.dst_file1, **kwargs)
 
 
 class PublicAPITests(unittest.TestCase):

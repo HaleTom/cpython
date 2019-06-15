@@ -2539,6 +2539,8 @@ class TestGetTerminalSize(unittest.TestCase):
 
 class Symlink(unittest.TestCase):
 
+    import subprocess ## Testing XXX
+
     def setUp(self):
         # Create extant directories, files and symlinks
         extant_files = {'src_file1': 'sf1', 'src_file2': 'sf2',

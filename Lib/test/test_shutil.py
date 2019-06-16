@@ -2595,8 +2595,9 @@ class Symlink(unittest.TestCase):
             with self.assertRaises(TypeError):
                 shutil.symlink(self.src_file1, self.dst_file1, **kwargs)
 
+
     #
-    # Single source, NO overwrite
+    # Single source
     #
     def test_1src_dst_not_exist(self):
         src = self.src_file1
@@ -2618,7 +2619,7 @@ class Symlink(unittest.TestCase):
                 shutil.symlink(self.src_file1, dst)
 
     #
-    # Single source, overwrite=True
+    # Overwrite=True
     #
     def test_1src_dst_overwrite_not_exist(self):
         src = self.src_file1
@@ -2642,7 +2643,13 @@ class Symlink(unittest.TestCase):
             shutil.symlink(src, dst, overwrite=True)
             self.assertEqual(os.readlink(dst), src)
 
+    #
+    # List with single element
+    #
 
+    #
+    # List with more than one element
+    #
 
     #
     # OLD TESTS
@@ -2673,16 +2680,6 @@ class Symlink(unittest.TestCase):
     def test_only_two_positional_args(self):
         with self.assertRaises(TypeError):
             shutil.symlink(self.src_file1, self.dst_file1, True)
-
-    def test_(self):
-        pass
-
-    def test_(self):
-        pass
-
-    def test_(self):
-        pass
-
 
 
 class PublicAPITests(unittest.TestCase):

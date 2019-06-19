@@ -2610,7 +2610,7 @@ class Symlink(unittest.TestCase):
 
 
     #
-    # Calling of helper functions
+    # Calling of functions
     #
     @unittest.expectedFailure
     def test_target_is_dir_passed_for_each_src(self):
@@ -2620,9 +2620,8 @@ class Symlink(unittest.TestCase):
     def test_overwrite_passed_for_each_src(self):
         srcs = self.srcs
 
-    #
     # Single source
-    #
+
     def test_1src_dst_not_exist(self):
         src = self.src_file1
         dst = self.new1
@@ -2649,9 +2648,7 @@ class Symlink(unittest.TestCase):
                 with self.assertRaises(FileExistsError):
                     shutil.symlink(self.src_file1, dst)
 
-    #
     # Overwrite=True
-    #
 
     def test_overwrite_not_exist(self):
         src = self.src_file1

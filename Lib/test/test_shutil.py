@@ -2785,7 +2785,8 @@ def describe(arg):
         m = re.search(r'describe\s*\((.+?)\)$', caller_lines)
         if m:
             caller_lines = m.group(1)
-            position = str(callerframeinfo.filename) + "@" + str(callerframeinfo.lineno)
+            position = str(callerframeinfo.filename) + "@" \
+                       + str(callerframeinfo.lineno)
 
             # Add additional info such as shape, length, datatype
             additional = []
@@ -2806,7 +2807,8 @@ def describe(arg):
 
             print(position, "describe(" + caller_lines + ") = ", end='')
             print(" ".join(additional) + " ", end='')
-            if "\n" in str_arg: print()  # It's multi-line, line up arrays
+            if "\n" in str_arg:
+                print()  # It's multi-line, line up arrays
             print(str_arg)
         else:
             print("Describe: couldn't find caller context")
